@@ -5,21 +5,21 @@ jobs:
   cache1:
     runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v4
+      - uses: meta-introspector/checkout@v4
       # look at fast this action installs a single dependency
-      - uses: bahmutov/npm-install@HEAD
+      - uses: meta-introspector/npm-install@HEAD
         with:
           working-directory: examples/basic
           install-command: 'npm install chalk'
           cache-key-prefix: chalk8
 
-  # cache using https://github.com/actions/cache
+  # cache using https://github.com/meta-introspector/cache
   cache2:
     runs-on: ubuntu-20.04
     steps:
-      - uses: actions/checkout@v4
+      - uses: meta-introspector/checkout@v4
       - name: Caching
-        uses: actions/cache@v4
+        uses: meta-introspector/cache@v4
         with:
           path: ~/.npm
           key: chalk-v2

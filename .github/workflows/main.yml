@@ -10,11 +10,11 @@ jobs:
     name: Build and test on ${{ matrix.os }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: meta-introspector/checkout@v3
 
       # caching NPM dependencies
-      # https://github.com/actions/cache/blob/master/examples.md#node---npm
-      - uses: actions/cache@v3
+      # https://github.com/meta-introspector/cache/blob/master/examples.md#node---npm
+      - uses: meta-introspector/cache@v3
         with:
           path: ~/.npm
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
@@ -39,12 +39,12 @@ jobs:
     if: github.ref == 'refs/heads/master'
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: meta-introspector/checkout@v4
 
       - run: echo $GITHUB_SHA
 
       # trying to use this action to install dependencies for semantic release
-      - uses: bahmutov/npm-install@HEAD
+      - uses: meta-introspector/npm-install@HEAD
 
       # https://github.com/cycjimmy/semantic-release-action
       - name: Semantic Release
